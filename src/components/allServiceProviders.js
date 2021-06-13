@@ -11,7 +11,7 @@ function AllServiceProviders() {
   useEffect(() => {
     if (results.length < 1) {
       axios
-        .get(`http://bownapp.com/api/service-providers/`)
+        .get(`https://bownapp.com/api/service-providers/`)
         .then((res) => {
           setresults(res.data.serviceProviders);
           console.log(res.data.serviceProviders);
@@ -24,7 +24,7 @@ function AllServiceProviders() {
 
   function deleteService(serviceProviderId) {
     axios
-    .delete(`http://bownapp.com/api/service-providers/${serviceProviderId}`)
+    .delete(`https://bownapp.com/api/service-providers/${serviceProviderId}`)
 
   }
 
