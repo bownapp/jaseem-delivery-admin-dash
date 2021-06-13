@@ -1,0 +1,517 @@
+
+
+
+
+
+.descriptionText{
+    font-size: 16px;
+}
+
+.smallImageContainer {
+    width: 60px;
+    height: 60px;
+    border-radius: 20%;
+    padding: 5px;
+    box-shadow: 0 2px 6px #0e3805;
+}
+
+.card1 {
+    /* background: #5ca54b; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex: 1; */
+    margin-bottom: 5px;
+    /* font-size: 16px; */
+    box-shadow: 1px 1px 5px 2px #00000036;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 1s;
+}
+
+.loginContainerSize {
+    width: 400px;
+    height: 300px;
+}
+
+
+
+.profileContainer {
+    width: 500px;
+    height: 500px;
+}
+
+.profileImageContainer {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    color: wheat;
+    align-items: center;
+    border-bottom: 1px solid;
+    flex-direction: column;
+}
+
+.profileDetailsContainer {
+    flex: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+
+.profileImageContainer input[type='file'] {
+    display: none;
+
+  }
+
+.profileText {
+    margin-left: 7%;
+    padding: 12px;
+}
+
+.labelClass {
+    padding: 0;
+    margin: 0;
+    margin-left: 11%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-size: 12px;
+    /* font-weight: bold; */
+    margin-bottom: 5px;
+}
+
+.labelForFile {
+    background-color: rgb(69, 77, 65);
+    padding: 3px 7px 3px 7px;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.labelForFile:hover {
+    background-color: rgb(46, 44, 44);
+}
+
+
+
+
+.form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+    flex:1;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.header {
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    border-radius: 10px;
+    color: rgb(94, 86, 86);
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 1s;
+    padding-top: 5px;
+    /* margin-top: 15px; */
+}
+
+.headerHover{
+    position: absolute;
+    height: 60px;
+    cursor: pointer;
+}
+
+.headerHover:hover {
+    background-color: #1c4912;
+}
+
+.input-container {
+    opacity: 1;
+    transition: 1s;
+    width: 100%;
+    /* margin-left: 10%; */
+
+}
+
+.inputDescription {
+    margin: 0px;
+    padding: 0px;
+    margin-left: 11%;
+    /* position: relative; */
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+
+.inputStyle {
+    width: 80%;
+    margin: 0;
+    
+    margin-left: 10%;
+    /* margin-right: 10%; */
+    align-self: center;
+    border-style: solid;
+    outline: 0;
+    font-size: 0.95em;
+    color: black;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #5e53533b;
+    border-left: 1px solid #5e53533b;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    margin-bottom: 3px;
+    
+}
+
+.inputStyle:focus {
+    border-color:  #cfd8cd;
+}
+
+/* ::placeholder {
+    color: #134208;
+    opacity: 1;
+    font-size: 12px;
+  } */
+
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+.button1 {
+    background: #225218;
+    width: 200px;
+    margin: 0;
+    /* padding: 0; */
+    color: white;
+    border-radius: 22px;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    transition: 0.5s;
+    align-self: center;
+}
+
+.button1:hover{
+    background: #0e3805;
+}
+
+
+
+.hide-section {
+    opacity: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 500px) {
+    .responsiveWidth {
+        width: 300px
+    }     
+}
+
+.hide-login {
+    /* width: 300px; */
+    height: 60px;
+    width: 80%;
+  max-width: 600px;
+}
+
+/* this is START */
+
+.blank100 {
+    height: 100px;
+}
+.cardOneAdd {
+    flex-direction: column;
+}
+
+.loginSection {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* height: min-content; */
+    height: 300px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLogin {
+    margin: 0;
+    color: rgb(94, 86, 86);
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 1s;
+    /* padding-top: 5px; */
+    /* flex: 2; */
+}
+
+
+.numberInputContainer {
+    /* flex: 2; */
+    width: 80%;
+    max-width: 350px;
+    /* display: flex; */
+
+
+}
+
+.numberInputSubContainer {
+    display: flex;
+}
+
+.numberInputContainer p{
+    margin: 0;
+    padding-left: 5px;
+    font-size: 15px;
+    color: rgb(97, 92, 92);
+    padding-bottom: 2px;
+}
+
+.numberInput {
+    /* background-color: blue; */
+    width: 100%;
+    border: 2px solid rgb(100, 98, 98);
+    padding: 8px 0px 8px 10px;
+    outline: none;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+::placeholder {
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+#recaptcha-container {
+    /* flex: 1; */
+    /* margin: 10px 0px 10px 0px; */
+    height: 100px;
+    /* border-radius: 22px;
+    overflow: hidden; */
+    /* height: 50px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    width: min-content; */
+}
+
+.signInButton {
+    letter-spacing: 0.1em;
+    height: 33px;
+    width: 50%;
+    max-width: 300px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.getOTPbutton {
+    /* letter-spacing: 0.1em; */
+    /* height: 33px; */
+    width: 25%;
+    /* max-width: 300px; */
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 0px 5px;
+    margin: 0 0 0 3px;
+}
+
+.otpHasBeenSent {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    color: red;
+}
+
+/* // profile js */
+
+#profileHeight {
+    min-height: 300px;
+    height: min-content;
+    flex-direction: column;
+}
+
+.profileBoxes {
+    width: 100%;
+    display: flex;
+    /* margin: 5px 20px 5px 20px; */
+}
+
+.profileBoxes p {
+    margin: 0px 20px 0px 20px;
+    color: white;
+}
+
+
+.editButtonContainer img{
+    width: 20px;
+    height: 20px;
+    align-self:flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+    /* position: absolute; */
+    /* margin-left: 300px; */
+    /* margin-top: 3px; */
+    padding: 5px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.logOutIcon img:hover {
+    /* background-color: blue; */
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.editButtonContainer img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
+} 
+
+.profileBox1 {
+    justify-content: space-between;
+    align-items: flex-start;    
+    /* padding-left: ; */
+    height: 60px;
+    flex-wrap: wrap;
+    /* background-color: whitesmoke; */
+}
+
+.profileBoxForUpdate {
+    justify-content: space-between;
+    align-items: flex-start;    
+    height: 40px;
+    flex-wrap: wrap;
+}
+
+
+
+.profileBox2 {
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-around;
+    /* background-color: whitesmoke; */
+}
+
+.profileBox2singleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completeProfileInputContain {
+    /* flex: ; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    height: 180px;
+    padding-right: 3%;
+}
+
+.updateProfileButton {
+    height: min-content;
+
+}
+
+
+.updateProfileButton p {
+    margin: 0;
+    background-color: white;
+    display: flex;
+    /* width: 40%; */
+    margin-left: 4%;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px 5px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    /* font-size: 18px; */
+    /* justify-content: space-between; */
+    width: 130px;
+}
+
+.updateProfileButton b {
+    margin-right: 2px;
+}
+
+.logOutIcon {
+    position: absolute;
+    align-self: flex-end;
+    justify-self: flex-end;
+    justify-items: flex-end;
+    justify-content: flex-end;
+    margin-top: 220px;
+    margin-right: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* padding-bottom: 20px; */
+    /* display: none; */
+    
+}
+
+.logOutIcon p{
+    margin: 0px 3px 0px 3px;
+    /* margin-right: 3px; */
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.logOutIcon img{
+    margin-top: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.linkToQuiz {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 400px) {
+    .profileBox1 {   
+        align-self: start;
+        justify-content: space-evenly;    
+    }
+
+    
+    
+  }

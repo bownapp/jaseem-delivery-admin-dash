@@ -1,0 +1,73 @@
+.body {
+    /* background: linear-gradient(45deg, #5ca54b, #000000); */
+    font-family: "Open Sans", sans-serif;
+    min-height: 100vh;
+    height: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+    
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.flexContainFull {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fontMontserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wahniColor {
+    color: #5ca54b;
+}
+
+.wahniBgColor {
+    background-color: #5ca54b;
+}
+
+.link {
+    text-decoration: none;
+  }
+
+.buttonOne {
+    min-height: 45px;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 15px;
+    background-color: #e64848;
+    padding: 0px 20px 0px 20px;
+    font-weight: bold;
+    /* add width */
+    /* add margin */
+}
+
+.cardOne {
+  max-width: 500px;
+  width: 80%;
+  min-height: 400px;
+  height: min-content;
+  border-radius: 15px;
+  /* padding: 20px; */
+  box-shadow: 1px 1px 5px 2px #00000036;
+  display: flex;
+  transition: 1s;
+  
+}
