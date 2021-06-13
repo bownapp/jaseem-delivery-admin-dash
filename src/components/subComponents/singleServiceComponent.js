@@ -27,7 +27,7 @@ const [isLoading, setisLoading] = useState(false)
       if(!deleteIsLoading) {
         setdeleteIsLoading(true)
         axios
-        .delete(`http://localhost:5000/api/service-providers/${serviceProviderId}`)
+        .delete(`http://bownapp.com/api/service-providers/${serviceProviderId}`)
         .then(res => {
             alert('Successfully Deleted')
             setdeleteIsLoading(false)

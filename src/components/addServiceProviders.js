@@ -154,7 +154,7 @@ function AddServiceProviders() {
      
      console.log(updateObj)
 
-     axios.post(`http://localhost:5000/api/service-providers/`, updateObj)
+     axios.post(`http://bownapp.com/api/service-providers/`, updateObj)
      .then(res => {
       console.log(res.data.dummyServiceProvider._id)
       if(image) {
@@ -218,7 +218,7 @@ function AddServiceProviders() {
      //5.
      .then(() => {
         setmessage('updating database...')
-        axios.patch(`http://localhost:5000/api/service-providers/${newId}`,{photoUrl: `profilePics/${newId}${extension()}`})
+        axios.patch(`http://bownapp.com/api/service-providers/${newId}`,{photoUrl: `profilePics/${newId}${extension()}`})
       .then(res1 => {
         console.log(res1)
         setisLoading(false)
