@@ -41,7 +41,7 @@ function EditSingleServiceComponent(props) {
    const [gettingAddress, setgettingAddress] = useState(false)
    function getAddress(addNew1) {
      
-     if(latitude !== singleServiceObject.loc.coordinates[1] && longitude !== singleServiceObject.loc.coordinates[0]) {
+     if(latitude !== singleServiceObject.loc.coordinates[1] || longitude !== singleServiceObject.loc.coordinates[0]) {
       if(addNew1) {
         setisLoading(true)
        }
