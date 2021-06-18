@@ -139,7 +139,7 @@ function AddNewService(props) {
      
      console.log(finalObj)
 
-     axios.patch(`http://localhost:5000/api/service-providers/${singleServiceObject.id}/addService`, {
+     axios.patch(`https://bownapp.com/api/service-providers/${singleServiceObject.id}/addService`, {
       newServiceDetails: finalObj
      }).then(res => {
           console.log(res.data)

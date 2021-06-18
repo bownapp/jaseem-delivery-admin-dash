@@ -102,7 +102,7 @@ function EditSingleServiceComponent(props) {
      
      console.log(updateObj)
 
-     axios.patch(`http://localhost:5000/api/service-providers/${singleServiceObject.id}`, updateObj)
+     axios.patch(`https://bownapp.com/api/service-providers/${singleServiceObject.id}`, updateObj)
      .then(res => {
       // console.log(res.data.dummyServiceProvider._id)
       if(image) {

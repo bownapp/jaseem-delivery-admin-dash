@@ -31,7 +31,7 @@ function AllServiceProviders() {
     axios
       .get(
         // `https://bownapp.com/api/service-providers/search-by-service-id/${serviceid}/${subtypeid}`,
-        `http://localhost:5000/api/service-providers/10`,
+        `https://bownapp.com/api/service-providers/10`,
       )
       .then(res => {
         console.log('received');
@@ -67,7 +67,7 @@ function AllServiceProviders() {
     axios
       .get(
         // `https://bownapp.com/api/service-providers/search-by-service-id/${serviceid}/${subtypeid}`,
-        `http://localhost:5000/api/service-providers/10/${skipNumber}`,
+        `https://bownapp.com/api/service-providers/10/${skipNumber}`,
       )
       .then(res => {
         console.log('received');
