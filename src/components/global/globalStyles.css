@@ -8,7 +8,8 @@
     align-items: center;
     flex-direction: column;
     transition: 1s;
-    
+    background-color: #EEF8FA;
+    margin-bottom: 30px;
 }
 
 .flex1 {
@@ -32,11 +33,11 @@
 }
 
 .wahniColor {
-    color: #5ca54b;
+    color: #28798a;
 }
 
 .wahniBgColor {
-    background-color: #5ca54b;
+    background-color: #28798a;
 }
 
 .link {
@@ -59,6 +60,23 @@
     /* add margin */
 }
 
+.buttonTwo {
+    min-height: 45px;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 15px;
+    background-color: #000;
+    padding: 0px 20px 0px 20px;
+    font-weight: bold;
+    width: 150px;
+    /* add width */
+    /* add margin */
+}
+
 .cardOne {
   max-width: 500px;
   width: 80%;
@@ -71,3 +89,44 @@
   transition: 1s;
   
 }
+
+.logoutContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 20px;
+    color: black;
+}
+
+.logoutButton {
+    /* min-height: 45px; */
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 15px;
+    background-color: #000;
+    padding: 10px 10px 10px 10px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.cardOneSmall {
+    max-width: 500px;
+    
+    min-height: 400px;
+    height: min-content;
+    border-radius: 15px;
+    /* padding: 20px; */
+    box-shadow: 1px 1px 5px 2px #00000036;
+    display: flex;
+    transition: 1s;
+    flex-direction: column;
+    margin: 20px 0px 20px 0px;
+
+  }

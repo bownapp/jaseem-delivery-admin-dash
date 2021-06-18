@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.cardOneAdd {
+  flex-direction: column;
+  background-color: white;
+  margin: 50px 0px 20px 0px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+}
+
+.textInputStyleOne {
+  /* display: none; */
+  width: 80%;
+  border-radius: 10px;
+  padding: 6px 5px 6px 10px;
+  font-size: 16px;
+  /* border: none; */
+  border-width: 1px;
+  
+  outline:black;
+}
+
+
+.latNlong {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.singleDataEntry {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+  text-transform:uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.singleDataEntry p{
+  padding: 0;
+  margin: 0px 0px 5px 0px;
+}
+
+.daysDiv {
+  width: 100%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.addressArea {
+  height: 100px;
+  width: 80%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttonAdd {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+/* //SELECT */
+
+.selectCustom select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+
+}
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+.selectCustom select::-ms-expand {
+  display: none;
+}
+
+.select {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+
+}
+
+.select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+
+}
+
+.selectCustom select,
+.select:after {
+  grid-area: select;
+}

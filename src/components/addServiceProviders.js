@@ -6,6 +6,7 @@ import { allServices1 } from "./context/allServices";
 import TimePicker from 'react-time-picker';
 import axios from "axios";
 import Loader from "./global/loader";
+import './addServiceProviders.css'
 
 
 
@@ -86,32 +87,56 @@ function AddServiceProviders() {
    function toTimestamp(val){
     // let time = 1626739201;
     // console.log(time.toUTCString())
-    const hourInt = parseInt(val.substr(0,2))
+    if(val && val!=='' && val !== null) {
+      const hourInt = parseInt(val.substr(0,2))
     const minuteInt = parseInt(val.substr(3,5))
     // console.log(hourInt)
     // console.log(minuteInt)
     // console.log(new Date(2021, 6, 13, hourInt, minuteInt))
     var datum = new Date(Date.UTC(2021,6,20,hourInt,minuteInt,1));
     return new Date(2021, 6, 13, hourInt, minuteInt)
+    }
    }
 
-   function getAddress() {
-     const lat1 = parseFloat(latitude)
-     const long1 = parseFloat(longitude)
-    //function to get address using current lat and lng
-    fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat1}&lon=${long1}&format=json`,
-    )
-      .then(response => response.json())
-      .then(responseJson => {
-        console.log(responseJson.display_name);
-        setAddress(responseJson.display_name);
-       
-      })
-      .catch(err => console.log(err));
+   const [gettingAddress, setgettingAddress] = useState(false)
+   function getAddress(addNew1) {
+     
+     if(latitude !== '' && longitude !== '') {
+      if(addNew1) {
+        setisLoading(true)
+       }
+       setmessage('getting address')
+      setgettingAddress(true)
+      const lat1 = parseFloat(latitude)
+      const long1 = parseFloat(longitude)
+     //function to get address using current lat and lng
+     fetch(
+       `https://nominatim.openstreetmap.org/reverse?lat=${lat1}&lon=${long1}&format=json`,
+     )
+       .then(response => response.json())
+       .then(responseJson => {
+         setgettingAddress(false)
+ 
+         console.log(responseJson.display_name);
+         setAddress(responseJson.display_name);
+         if(addNew1) {
+           addNew1(responseJson.display_name)
+         }
+        
+       })
+       .catch(err => {
+         console.log(err)
+         alert(err)
+         setgettingAddress(false)
+         setisLoading(false)
+
+       });
+     } else {
+       alert('Enter latitude and longitude')
+     }
   }
 
-   function addNew() {
+   function addNew(address1) {
     setisLoading(true)
     setmessage('adding to database')
 
@@ -132,12 +157,17 @@ function AddServiceProviders() {
        name,
        phoneNumber,
        bio,
-       contactInfo: {},
+       contactInfo: {
+         whatsapp: phoneNumber
+       },
        photoUrl,
-       address,
+       address: address1,
        isDummy: true,
        addedBy: user.id,
-      //  loc,
+       loc: {
+         type: "Point",
+         coordinates: [longitude, latitude]
+       },
        servicesDetails: [{
         serviceName: selectedService.name,
         serviceId: selectedService.id,
@@ -151,6 +181,8 @@ function AddServiceProviders() {
         }
        }]
      }
+
+    
      
      console.log(updateObj)
 
@@ -267,115 +299,179 @@ function AddServiceProviders() {
     return (
       <div className="footerDiv">
         <div className="footerContain2 wahniColor">
-          <button onClick={() => firebase.auth().signOut()}>Log out</button>
           <div className="body">
+          <div className='logoutContainer'>
+          <div>Welcome, {user.name}</div>
+          <div onClick={() => firebase.auth().signOut()} className='logoutButton wahniColor flexCenter'>
+            LOGOUT
+          </div>
+        </div>
         <div className="cardOne flexCenter cardOneAdd fontMontserrat">
        
       {!isLoading ? 
       <>
-       <input type="file" accept="image/x-png,image/jpeg" onChange={(e) => {onImageChange(e); }}/>
+          <div className='singleDataEntry'>
+        Click Below
+      <label class="custom-file-upload">
+      <input type="file" accept="image/x-png,image/jpeg" onChange={(e) => {onImageChange(e); }}/>
+    <i class="fa fa-cloud-upload"></i> 
+    {
+      image ? image.name : 'Select Image'
+    }
+</label>
+</div>
         
-        <button onClick={() => uploadToFirebase('1111')}>Upload to Firebase</button>
-
-        <p>Enter your name:</p>
+        {/* <button onClick={() => uploadToFirebase('1111')}>Upload to Firebase</button> */}
+        <div className='singleDataEntry selectCustom'>
+          
+          <div class="select">
+    <select id="standard-select"
+              // value={selectedService.name} 
+          // defaultValue={5}
+          onChange={(e) => {
+            if(e.target.value>-1) {
+              let selected1 = {
+                name: allServices1[e.target.value].name,
+                id: allServices1[e.target.value].serviceId,
+              }
+              setselectedService(selected1)
+              setselectedServiceSubTypesArray(allServices1[e.target.value].subTypes)
+              console.log(allServices1[e.target.value].subTypes)
+              console.log(selected1)
+              setselectedSubType({})
+              setselectedSubTypeIndex(-1)
+            }
+          }} 
+        >
+          <option value={-1}>Select a Service</option>
+         {
+           allServices1.map((obj, idx) => {
+            return <option value={idx}>{obj.name}</option>
+           })
+         }
+        </select>
+        </div>
+        </div>
+        <div className='singleDataEntry selectCustom'>
+  
+        <div class="select">
+    <select id="standard-select"
+          
+          value={selectedSubTypeIndex}
+          onChange={(e) => {
+            if(e.target.value > -1) {
+              let selected1 = {
+                name: selectedServiceSubTypesArray[e.target.value].name,
+                id: selectedServiceSubTypesArray[e.target.value].subTypeId,
+              }
+              setselectedSubType(selected1)
+              setselectedSubTypeIndex(e.target.value)
+              // setselectedServiceSubTypesArray(allServices1[e.target.value].subTypes)
+              // console.log(allServices1[e.target.value].subTypes)
+              console.log(selected1)
+            }
+          }} 
+        >
+                  <option value={-1}>Select subTypeId</option>
+         {
+           selectedServiceSubTypesArray.map((obj, idx) => {
+            return <option value={idx}>{obj.name}</option>
+           })
+         }
+        </select>
+        </div>
+        </div>
+        <div className='singleDataEntry'>
+        <p>display name</p>
         <input
           type="text"
           value={name}
           onChange={e => setname(e.target.value)}
+          className='fontMontserrat textInputStyleOne'
         />
-        <p>Enter your NUMBER:</p>
+        </div>
+        
+        <div className='singleDataEntry'>
+        <p>phone number</p>
         <input
           type="text"
           value={phoneNumber}
           onChange={e => setphoneNumber(e.target.value)}
+          className='fontMontserrat textInputStyleOne'
+
         />
-        <p>Enter your latitude</p>
+        </div>
+
+        <div className='latNlong'>
+        <div className='singleDataEntry'>
+        <p>latitude</p>
         <input
           type="text"
           value={latitude}
           onChange={e => setlatitude(e.target.value)}
+          className='fontMontserrat textInputStyleOne'
+
         />
-        <p>Enter your longitude</p>
+        </div>
+        <div className='singleDataEntry'>
+        <p>longitude</p>
         <input
           type="text"
           value={longitude}
           onChange={e => setlongitude(e.target.value)}
+          className='fontMontserrat textInputStyleOne'
+
         />
+        </div>
+        </div>
+        <div className='singleDataEntry'>
+          <p>address</p>
+        <div className='addressArea flexCenter'>
+        {
+          gettingAddress ? 
+          <Loader width={30} borderWidth={3} />
+          :
+          <p>{address}</p>
+        }
+        </div>
         <button onClick={() => getAddress()}>Get address</button>
-        <p>{address}</p>
-        <p>Enterbio</p>
-        <input
+        </div>
+        <div className='singleDataEntry'>
+        <p>Enter bio</p>
+        <textarea
           type="text"
           value={bio}
           onChange={e => setbio(e.target.value)}
+          className='fontMontserrat textInputStyleOne'
+          style={{height: 80, flexWrap: 'wrap'}}
         />
-                <select 
-        // value={selectedService.name} 
-        // defaultValue={5}
-        onChange={(e) => {
-          if(e.target.value>-1) {
-            let selected1 = {
-              name: allServices1[e.target.value].name,
-              id: allServices1[e.target.value].serviceId,
-            }
-            setselectedService(selected1)
-            setselectedServiceSubTypesArray(allServices1[e.target.value].subTypes)
-            console.log(allServices1[e.target.value].subTypes)
-            console.log(selected1)
-            setselectedSubType({})
-            setselectedSubTypeIndex(-1)
-          }
-        }} 
-      >
-        <option value={-1}>Select a Service</option>
-       {
-         allServices1.map((obj, idx) => {
-          return <option value={idx}>{obj.name}</option>
-         })
-       }
-      </select>
-        <select 
-        value={selectedSubTypeIndex}
-        onChange={(e) => {
-          if(e.target.value > -1) {
-            let selected1 = {
-              name: selectedServiceSubTypesArray[e.target.value].name,
-              id: selectedServiceSubTypesArray[e.target.value].subTypeId,
-            }
-            setselectedSubType(selected1)
-            setselectedSubTypeIndex(e.target.value)
-            // setselectedServiceSubTypesArray(allServices1[e.target.value].subTypes)
-            // console.log(allServices1[e.target.value].subTypes)
-            console.log(selected1)
-          }
-        }} 
-      >
-                <option value={-1}>Select subTypeId</option>
-       {
-         selectedServiceSubTypesArray.map((obj, idx) => {
-          return <option value={idx}>{obj.name}</option>
-         })
-       }
-      </select>
+        </div>
+        
+      <div className='singleDataEntry'>
+
       <div className="daysDiv">
       
       {
         daysAvailableArray.map((obj, idx) => {
-          return  <>
+          return  <div style={{marginLeft:5, marginRight: 5, marginTop:5}} className='flexCenter'>
           <input type="checkbox" id="saturday" name={obj.name} checked={obj.value} onChange={(e) => {obj.setvalue(prev => !prev)}}/>{obj.name}
-          </>
+          </div>
         })
       }
   </div>
+  </div>
+  <div className='singleDataEntry'>
+      <div>FROM</div>
   <TimePicker
         onChange={(val) => {
           setselectedTimeFrom(val)
-          console.log(val.substr(0,2))
-          console.log(val.substr(3,5))
+          // console.log(val.substr(0,2))
+          // console.log(val.substr(3,5))
           setselectedTimeFrom1(toTimestamp(val))
         }}
         value={selectedTimeFrom}
       />
+      <div>TO</div>
       <TimePicker
         onChange={(val) => {
           setselectedTimeTo(val)
@@ -386,7 +482,8 @@ function AddServiceProviders() {
         }}
         value={selectedTimeTo}
       />
-      <button onClick={() => addNew()}>ADD</button>
+      </div>
+      <div onClick={() => getAddress(addNew)} className='buttonTwo flexCenter buttonAdd'>ADD</div>
       </>
         :
         <>
