@@ -87,6 +87,9 @@ function AllServiceProviders() {
         setisLoadingMore(false);
       });
       }
+      else {
+        window.alert('Loading...')
+      }
   }
 
   if (user && !user.loggedIn) return <Redirect to="/" />;
@@ -106,6 +109,19 @@ function AllServiceProviders() {
               <SingleServiceComponent singleServiceObject={obj} />
             );
           })}
+          {
+        (skipNumber !== false) ? 
+        <div 
+        onClick={() => loadMore()}
+        className='buttonTwo flexCenter wahniColor'>
+          {
+            isLoadingMore ? 'Loading...' : 'Load More'
+          }
+        </div>
+        
+        : 
+        null
+      }
         </div>
       </div>
     );
