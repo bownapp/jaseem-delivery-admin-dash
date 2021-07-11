@@ -34,8 +34,8 @@ function AllServiceProviders() {
     setnoResults(false)
     axios
       .get(
-        // `http://localhost:5000/api/service-providers/search-by-service-id/${serviceid}/${subtypeid}`,
-        `http://localhost:5000/api/service-providers/limit-skip-dummy/${user.id}/10`,
+        // `https://bownapp.com/api/service-providers/search-by-service-id/${serviceid}/${subtypeid}`,
+        `https://bownapp.com/api/service-providers/limit-skip-dummy/${user.id}/10`,
       )
       .then(res => {
         console.log('received');
@@ -72,8 +72,8 @@ function AllServiceProviders() {
         setisLoadingMore(true);
     axios
       .get(
-        // `http://localhost:5000/api/service-providers/search-by-service-id/${serviceid}/${subtypeid}`,
-        `http://localhost:5000/api/service-providers/limit-skip-dummy/${user.id}/10/${skipNumber}`,
+        // `https://bownapp.com/api/service-providers/search-by-service-id/${serviceid}/${subtypeid}`,
+        `https://bownapp.com/api/service-providers/limit-skip-dummy/${user.id}/10/${skipNumber}`,
       )
       .then(res => {
         console.log('received');
@@ -103,7 +103,7 @@ function AllServiceProviders() {
     // const user = firebase.auth().currentUser;
     // const token = user && (await user.getIdToken());
   
-    await axios.get(`http://localhost:5000/api/service-providers/`
+    await axios.get(`https://bownapp.com/api/service-providers/`
     // , 
     // {
     //   headers: {

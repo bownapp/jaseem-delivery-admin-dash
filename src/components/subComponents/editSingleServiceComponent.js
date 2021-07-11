@@ -102,7 +102,7 @@ function EditSingleServiceComponent(props) {
      
      console.log(updateObj)
 
-     axios.patch(`http://localhost:5000/api/service-providers/${singleServiceObject.id}`, updateObj)
+     axios.patch(`https://bownapp.com/api/service-providers/${singleServiceObject.id}`, updateObj)
      .then(res => {
       // console.log(res.data.dummyServiceProvider._id)
       if(image) {
@@ -167,7 +167,7 @@ function EditSingleServiceComponent(props) {
      .then(() => {
         setmessage('updating database...')
         if(fileRef !== singleServiceObject.photoUrl) {
-          axios.patch(`http://localhost:5000/api/service-providers/${newId}`,{photoUrl: `profilePics/${newId}${extension()}`})
+          axios.patch(`https://bownapp.com/api/service-providers/${newId}`,{photoUrl: `profilePics/${newId}${extension()}`})
       .then(res1 => {
         console.log(res1)
         setisLoading(false)
