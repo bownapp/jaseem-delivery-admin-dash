@@ -12,6 +12,10 @@
     margin-bottom: 30px;
 }
 
+.lightBgColor {
+    background-color: #EEF8FA;
+}
+
 .flex1 {
     flex: 1;
 }

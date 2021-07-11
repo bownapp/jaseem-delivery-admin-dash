@@ -186,7 +186,7 @@ function AddServiceProviders() {
      
      console.log(updateObj)
 
-     axios.post(`https://bownapp.com/api/service-providers/`, updateObj)
+     axios.post(`http://localhost:5000/api/service-providers/`, updateObj)
      .then(res => {
       console.log(res.data.dummyServiceProvider._id)
       if(image) {
@@ -250,7 +250,7 @@ function AddServiceProviders() {
      //5.
      .then(() => {
         setmessage('updating database...')
-        axios.patch(`https://bownapp.com/api/service-providers/${newId}`,{photoUrl: `profilePics/${newId}${extension()}`})
+        axios.patch(`http://localhost:5000/api/service-providers/${newId}`,{photoUrl: `profilePics/${newId}${extension()}`})
       .then(res1 => {
         console.log(res1)
         setisLoading(false)
@@ -293,19 +293,14 @@ function AddServiceProviders() {
     setselectedTimeTo1('12:00')
   }
 
-  if (user && !user.loggedIn) return <Redirect to="/" />;
+  if (user && !user.loggedIn) return <Redirect to="/admin" />;
 
   if (true) {
     return (
       <div className="footerDiv">
         <div className="footerContain2 wahniColor">
           <div className="body">
-          <div className='logoutContainer'>
-          <div>Welcome, {user.name}</div>
-          <div onClick={() => firebase.auth().signOut()} className='logoutButton wahniColor flexCenter'>
-            LOGOUT
-          </div>
-        </div>
+          
         <div className="cardOne flexCenter cardOneAdd fontMontserrat">
        
       {!isLoading ? 

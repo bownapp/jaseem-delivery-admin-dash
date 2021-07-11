@@ -141,7 +141,7 @@ function LoginScreen() {
   //     <h1>Hello</h1>
   //   );
   // }
-  if (user && user.loggedIn) return <Redirect to="/service-providers" />;
+  if (user && user.loggedIn) return <Redirect to="/admin/service-providers" />;
   else if (userLoading) {
     return (
       <div className="body flexCenter">

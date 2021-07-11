@@ -21,9 +21,7 @@ const [addClicked, setaddClicked] = useState(false)
             setimageUrl(res)
           })
           .catch(err => console.log(err))
-          console.log('loading')
       }
-      console.log('loading')
   }, [])
 
   const [deleteIsLoading, setdeleteIsLoading] = useState(false)
@@ -31,7 +29,7 @@ const [addClicked, setaddClicked] = useState(false)
       if(!deleteIsLoading) {
         setdeleteIsLoading(true)
         axios
-        .delete(`https://bownapp.com/api/service-providers/${serviceProviderId}`)
+        .delete(`http://localhost:5000/api/service-providers/${serviceProviderId}`)
         .then(res => {
             alert('Successfully Deleted')
             setdeleteIsLoading(false)

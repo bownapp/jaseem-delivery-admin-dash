@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {  useEffect, useState } from "react";
 import firebase from "../../firebase";
 
@@ -5,6 +6,7 @@ import firebase from "../../firebase";
 export const UserContext = React.createContext({});
 
 const UserProvider = UserContext.Provider;
+
 // const UserConsumer = UserContext.Consumer;
 
 // function onAuthStateChange(callback) {
@@ -12,6 +14,8 @@ const UserProvider = UserContext.Provider;
 // }
 
 // user is added or logged in and sent to all the components of this site through this context
+
+
 
 export function UserContextProvider(props) {
   const [user, setUser] = useState({ loggedIn: false });
@@ -23,8 +27,12 @@ export function UserContextProvider(props) {
   const [userDetailsLoading, setuserDetailsLoading] = useState(false);
   /// results
   const [results, setresults] = useState([])
+  const [token, settoken] = useState('123')
+  const [expiryDate, setexpiryDate] = useState(new Date())
 
-  function onAuthStateChange() {
+  async function onAuthStateChange() {
+    
+
     setuserLoading(true);
     setuserDetailsLoading(true);
     setuserScoresLoading(true);
@@ -42,40 +50,9 @@ export function UserContextProvider(props) {
         });
 
         setuserLoading(false);
+        // getToken()
 
-        // firebase
-        //   .firestore()
-        //   .collection(`rankings`)
-        //   .where("uid", "==", user1.uid)
-        //   .orderBy("attendedAt", "desc")
-        //   .limit(1)
-        //   .onSnapshot(
-        //     (thisisquery) => {
-        //       const list = [];
-        //       thisisquery.forEach((doc) => {
-        //         list.push({ ...doc.data(), id: doc.id });
-        //       });
-        //       setUserScores(list);
-        //       setuserScoresLoading(false);
-        //     },
-        //     (err) => {
-        //       userScoresLoading(false);
-        //     }
-        //   );
-        // // get user details
-        // firebase
-        //   .firestore()
-        //   .doc(`users/${user1.uid}`)
-        //   .onSnapshot(
-        //     (docData) => {
-        //       const list = docData.data();
-        //       setUserDetails(list);
-        //       setuserDetailsLoading(false);
-        //     },
-        //     (err) => {
-        //       setuserDetailsLoading(false);
-        //     }
-        //   );
+        
       } else {
         console.log('yes')
 
@@ -89,15 +66,63 @@ export function UserContextProvider(props) {
     });
   }
 
+  
   // on useEffect user is authorized and user details are set and sent via context API to all components
 
   useEffect(() => {
     const unsubscribe = onAuthStateChange();
 
+    
     return () => {
       unsubscribe();
     };
   }, []);
+
+  async function getToken(func) {
+   
+      const user4token = firebase.auth().currentUser;
+        user4token && (user4token.getIdToken(true).then((res) => {
+          console.log(new Date(new Date().setHours(new Date().getHours() + 1)))
+          console.log(res)
+          setexpiryDate(new Date(new Date().setHours(new Date().getHours() + 1)))
+                  settoken(res)
+                  if(func) {
+                    func()
+                  }
+        }).catch(e => {
+          alert('Sorry! Could not authenticate with the server');
+        }));
+
+    clearTimeout(refreshTokenExpired);
+    var refreshTokenExpired = setTimeout(() => {
+      getToken()
+    }, 3300000);
+  }
+
+  async function getTokenAndRunFunc(func) {
+    if((new Date() < expiryDate)) {
+      func()
+    } else {
+      const user4token = firebase.auth().currentUser;
+        user4token && (user4token.getIdToken(true).then((res) => {
+          console.log(new Date(new Date().setHours(new Date().getHours() + 1)))
+          console.log(res)
+          setexpiryDate(new Date(new Date().setHours(new Date().getHours() + 1)))
+                  settoken(res)
+                  func()
+        }));
+    }
+        // console.log(token1)
+  }
+  // useEffect(() => {
+  //   getToken()
+    
+  // }, [])
+
+  
+  
+
+  
 
   return (
     <UserProvider
@@ -109,7 +134,13 @@ export function UserContextProvider(props) {
         userScoresLoading: userScoresLoading,
         userDetailsLoading: userDetailsLoading,
         results,
-        setresults
+        setresults,
+        getTokenAndRunFunc,
+        token,
+        settoken,
+        expiryDate,
+        setexpiryDate,
+        getToken
       }}
     >
       {props.children}

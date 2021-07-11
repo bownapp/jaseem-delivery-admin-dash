@@ -62,3 +62,48 @@
 .headerLogo {
     height: 25px;
 }
+
+.logoutBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logoutImage {
+    height: 35px;
+    /* width: 25px; */
+    padding: 5px 5px 5px 5px;
+    margin: 0px 5px 0px 5px;
+    cursor: pointer;
+}
+
+.logoutImage :hover {
+    /* background-color: ivory; */
+    transform: translateX(5);
+}
+
+#side-menu {
+    color:black;
+    display: flex;
+    width:min-content;
+    padding:0px;
+    margin: 0px;
+    cursor: pointer;
+    /* list-style:none; */
+    /* position: relative; */
+    }
+    
+    #side-menu:hover {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #side-menu:hover .label-menu {
+      display: flex;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    .label-menu {
+      display: none;
+    }
